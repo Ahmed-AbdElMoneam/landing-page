@@ -84,14 +84,17 @@ const menuCreator = (sectionsHeaders) => {
  */
 const scrollToActivate = (sectionIndex) => {
   const place = sections[sectionIndex].getBoundingClientRect(); // TODO: for each section I got its size and position values
+  const listElement = document.querySelectorAll('li');
   /**
    * Here in our application I used the last function top property as we want to activate the section in view only
    * I have chosen these values because they are the values where the section lies between
   */
   if (place.top > -100 && place.top < 300){
     sections[sectionIndex].classList.add('your-active-class');  // TODO: Here I want to distinguish the section in view so, I added active class to it to apply additional Css
+    listElement[sectionIndex].style.cssText = 'background-color: black; color: white';  // TODO: Add some css to the list item when the opposite section is in view
   } else {
     sections[sectionIndex].classList.remove('your-active-class'); // TODO: Except for section in view there won't be additional Css
+    listElement[sectionIndex].style.cssText = ''; // TODO: Except for section in view there won't be additional Css to its opposite list item
   }
 };
 
